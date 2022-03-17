@@ -7,11 +7,11 @@ public class take_or_leave {
 
 	public static int solve(int curr, int acc) {
 		if (curr == values.length) {
-			if (acc > SackSize)
-				return Integer.MIN_VALUE;
 			return 0;
 		}
-		int take = values[curr] + solve(curr + 1, acc + sizes[curr]);
+		int take = 0;
+		if( acc + sizes[curr] <= SackSize)
+			take = values[curr] + solve(curr + 1, acc + sizes[curr]);
 		int leave = solve(curr + 1, acc);
 		return Math.max(take, leave);
 	}
