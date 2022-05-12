@@ -8,6 +8,7 @@ public class Another_crisis {
 		Scanner sc = new Scanner(System.in);
 		PrintWriter pw = new PrintWriter(System.out);
 		while (true) {
+			// Constructing the graph of employees.
 			int n = sc.nextInt();
 			int t = sc.nextInt();
 			if (n == 0 && t == 0)
@@ -20,23 +21,37 @@ public class Another_crisis {
 				int manager = sc.nextInt();
 				graph[manager].add(i);
 			}
+			// We can define the problem recursively. We want to know the minimum number of
+			// employees needed to file a petition in order for the petition to reach the
+			// owner. We can create a recursive function called minimumEmployees that
+			// answers this problem. For every employee, we will call this function on all
+			// of his direct subordinates (children). We will store the answer for every
+			// subordinate in a priorityqueue. After that we will get the sum of the minimum
+			// t% of the answers and this will be the answer. The base case will be when we
+			// reach a leaf we return 1 as the only way he can file a petition is that he
+			// himself file it as he has no subordinates.
 			pw.println(minimumEmployees(graph, 0, t));
 		}
 		pw.flush();
 	}
 
 	public static int minimumEmployees(LinkedList<Integer>[] graph, int curr, int t) {
+		// base case
 		if (graph[curr].size() == 0) {
 			return 1;
 		}
+		// calculating the minimum number of subordinates needed to file the petition.
 		int min = (graph[curr].size() * t) / 100;
 		if ((graph[curr].size() * t) % 100 != 0)
 			min++;
 		PriorityQueue<Integer> subGraphsSol = new PriorityQueue<Integer>();
+		// calling the problem recursively on every subordinate and storing the results
+		// in the priority queue in order to get the answers sorted.
 		for (int x : graph[curr]) {
 			subGraphsSol.add(minimumEmployees(graph, x, t));
 		}
 		int res = 0;
+		// Calculate the sum of the minimum t% percent of the answers.
 		while (min-- > 0) {
 			res += subGraphsSol.poll();
 		}
