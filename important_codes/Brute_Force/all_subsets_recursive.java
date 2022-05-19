@@ -1,4 +1,4 @@
-package important_codes;
+package important_codes.Brute_Force;
 
 import java.util.*;
 

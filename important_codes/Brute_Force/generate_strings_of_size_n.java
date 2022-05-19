@@ -1,4 +1,4 @@
-package important_codes;
+package important_codes.Brute_Force;
 
 public class generate_strings_of_size_n {
 	public static void generate(int n) {

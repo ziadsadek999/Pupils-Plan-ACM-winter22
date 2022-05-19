@@ -1,4 +1,4 @@
-package important_codes;
+package important_codes.Graphs;
 
 import java.awt.Point;
 import java.util.*;

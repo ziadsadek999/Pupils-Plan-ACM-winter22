@@ -1,4 +1,4 @@
-package important_codes;
+package important_codes.Graphs;
 
 public class FloodFill {
 	// Every cell in the given grid is either 0 which means it is an empty cell or

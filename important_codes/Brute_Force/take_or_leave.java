@@ -1,4 +1,4 @@
-package important_codes;
+package important_codes.Brute_Force;
 
 public class take_or_leave {
 	static int SackSize;
@@ -10,7 +10,7 @@ public class take_or_leave {
 			return 0;
 		}
 		int take = 0;
-		if( acc + sizes[curr] <= SackSize)
+		if (acc + sizes[curr] <= SackSize)
 			take = values[curr] + solve(curr + 1, acc + sizes[curr]);
 		int leave = solve(curr + 1, acc);
 		return Math.max(take, leave);

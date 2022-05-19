@@ -1,4 +1,4 @@
-package important_codes;
+package important_codes.Sorting;
 public class mergeSort {
 	public static void sort(int[] arr) {
 		sortHelper(arr, 0, arr.length - 1);
